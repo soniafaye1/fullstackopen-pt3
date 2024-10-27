@@ -70,10 +70,54 @@ app.delete("/api/persons/:id", (request, response) => {
   response.status(204).end();
 });
 
+const generateId = () => {
+  const maxId = people.length > 0 ? Math.max(...people.map((n) => n.id)) : 0;
+  return maxId + 1;
+};
+
 app.post("/api/persons", (request, response) => {
   const body = request.body;
-  console.log("body ", body);
-  response.json(body);
+
+  for (const person of people) {
+    console.log("person: ", person);
+    if (person.name === body.name) {
+      return response.status(400).json({
+        error: "name must be unique",
+      });
+    }
+  }
+
+  //   const existName = people.filter((person) => person.name === body.name);
+  //   console.log("exist name: ", existName);
+
+  //   if (existName) {
+  //     return response.status(400).json({
+  //       error: "name must be unique",
+  //     });
+  //   }
+
+  if (!body.name) {
+    console.log(body);
+    return response.status(400).json({
+      error: "name is missing",
+    });
+  }
+
+  if (!body.number) {
+    console.log(body);
+    return response.status(400).json({
+      error: "number is missing",
+    });
+  }
+
+  const person = {
+    id: generateId(),
+    name: body.name,
+    number: body.number,
+  };
+
+  people = people.concat(person);
+  response.json(person);
 });
 
 const PORT = 3001;
