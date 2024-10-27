@@ -87,15 +87,6 @@ app.post("/api/persons", (request, response) => {
     }
   }
 
-  //   const existName = people.filter((person) => person.name === body.name);
-  //   console.log("exist name: ", existName);
-
-  //   if (existName) {
-  //     return response.status(400).json({
-  //       error: "name must be unique",
-  //     });
-  //   }
-
   if (!body.name) {
     console.log(body);
     return response.status(400).json({
