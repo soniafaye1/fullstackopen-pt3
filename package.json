@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:ui": "@powershell Remove-Item -Recurse -Force dist && cd ../part2/src/services/notes/ && npm run build && @powershell Copy-Item dist -Recurse ../notes-backend",
+    "build:ui": "@powershell Remove-Item -Recurse -Force dist && cd ../part2-notes/ && npm run build && @powershell Copy-Item dist -Recurse ../notes-backend",
     "deploy": "git push heroku main",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail"
