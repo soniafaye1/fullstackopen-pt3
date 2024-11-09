@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-//uri: mongodb+srv://soniafaye1:<db_password>@cluster0.bh96y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-//password: Sonechka18%1
 
 if (process.argv.length < 3) {
   console.log("give password as argument");
