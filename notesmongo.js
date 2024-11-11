@@ -10,19 +10,18 @@ const password = process.argv[2];
 const url = `mongodb+srv://soniafaye1:${password}@cluster0.bh96y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 mongoose.set("strictQuery", false);
-
 mongoose.connect(url).then(() => {
   const noteSchema = new mongoose.Schema({
     content: String,
     important: Boolean,
   });
-});
 
-const Note = mongoose.model("Note", noteSchema);
+  const Note = mongoose.model("Note", noteSchema);
 
-const note = new Note({
-  content: "HTML is easy",
-  important: true,
+  const note = new Note({
+    content: "HTML is easy",
+    important: true,
+  });
 });
 
 Note.find({}).then((result) => {
