@@ -11,11 +11,11 @@ const url = `mongodb+srv://soniafaye1:${password}@cluster0.bh96y.mongodb.net/?re
 
 mongoose.set("strictQuery", false);
 
-mongoose.connect(url);
-
-const noteSchema = new mongoose.Schema({
-  content: String,
-  important: Boolean,
+mongoose.connect(url).then(() => {
+  const noteSchema = new mongoose.Schema({
+    content: String,
+    important: Boolean,
+  });
 });
 
 const Note = mongoose.model("Note", noteSchema);
