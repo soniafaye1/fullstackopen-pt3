@@ -36,10 +36,10 @@ app.post("/api/notes", (request, response) => {
     return response.status(400).json({ error: "content missing" });
   }
 
-  const note = {
+  const note = new Note({
     content: body.content,
     important: body.important || false,
-  };
+  });
 
   note.save().then((savedNote) => {
     response.json(savedNote);
